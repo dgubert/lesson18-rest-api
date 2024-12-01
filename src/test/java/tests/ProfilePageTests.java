@@ -22,7 +22,7 @@ public class ProfilePageTests extends BaseTest {
         BookStoreApi.addBookToCart(bookId);
 
         ProfilePage.openPage();
-        ProfilePage.deleteBook();
+        ProfilePage.deleteBook(bookId);
         ProfilePage.checkBookDeletedUI(bookId);
 
         BookStoreApi.checkBooksListIsEmpty();

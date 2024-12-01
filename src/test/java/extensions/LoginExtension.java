@@ -1,6 +1,7 @@
 package extensions;
 
 import api.AccountApi;
+import io.qameta.allure.Step;
 import models.LoginResponseModel;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -15,16 +16,14 @@ public class LoginExtension implements BeforeEachCallback {
     public static LoginResponseModel response;
 
     @Override
+    @Step("Авторизируемся пользователем через API")
     public void beforeEach(ExtensionContext context) {
-        step("Авторизируемся через API", () -> {
-            response = AccountApi.getAuthorizationResponse();
+        response = AccountApi.getAuthorizationResponse();
 
-            open("/images/Toolsqa.jpg");
-            getWebDriver().manage().addCookie(new Cookie("userID", response.getUserId()));
-            getWebDriver().manage().addCookie(new Cookie("expires", response.getExpires()));
-            getWebDriver().manage().addCookie(new Cookie("token", response.getToken()));
-        });
-
+        open("/images/Toolsqa.jpg");
+        getWebDriver().manage().addCookie(new Cookie("userID", response.getUserId()));
+        getWebDriver().manage().addCookie(new Cookie("expires", response.getExpires()));
+        getWebDriver().manage().addCookie(new Cookie("token", response.getToken()));
     }
 
 }
