@@ -2,8 +2,8 @@ package specs;
 
 import io.restassured.specification.RequestSpecification;
 
+import static extensions.AllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
-import static tests.BaseTest.withCustomTemplates;
 
 public class RequestSpec {
     public static RequestSpecification requestSpec = with()

@@ -9,7 +9,6 @@ import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static io.qameta.allure.Allure.step;
 
 public class LoginExtension implements BeforeEachCallback {
 

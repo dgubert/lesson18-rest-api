@@ -26,6 +26,6 @@ public class ProfilePage {
 
     @Step("Проверяем через UI отсутствие книги {0} в корзине")
     public static void checkBookDeletedUI(String bookId) {
-        $("[href=profile?book=" + bookId + "]").shouldBe(visible);
+        $("[href=\"profile?book=" + bookId + "\"]").shouldNotBe(visible);
     }
 }

@@ -8,7 +8,6 @@ import models.ListOfBooksResponseModel;
 import java.util.List;
 
 import static extensions.LoginExtension.response;
-import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static specs.RequestSpec.requestSpec;

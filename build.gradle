@@ -30,7 +30,8 @@ dependencies {
             "io.rest-assured:rest-assured:5.5.0",
             "io.rest-assured:json-schema-validator:3.0.0",
             "io.qameta.allure:allure-rest-assured:2.29.0",
-            "org.assertj:assertj-core:3.26.3"
+            "org.assertj:assertj-core:3.26.3",
+            "org.aeonbits.owner:owner:1.0.12"
     )
 }
 

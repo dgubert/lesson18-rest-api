@@ -1,11 +1,8 @@
 package api;
 
-import io.qameta.allure.Step;
 import models.AuthorizationModel;
-import models.ListOfBooksResponseModel;
 import models.LoginResponseModel;
 
-import static extensions.LoginExtension.response;
 import static io.restassured.RestAssured.given;
 import static specs.RequestSpec.requestSpec;
 import static specs.ResponseSpec.response200Spec;
