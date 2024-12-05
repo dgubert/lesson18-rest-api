@@ -1,9 +1,9 @@
 package api;
 
 import io.qameta.allure.Step;
-import models.BookModel;
+import models.AddListOfBooksRequestModel;
 import models.IsbnModel;
-import models.ListOfBooksResponseModel;
+import models.UserListOfBooksResponseModel;
 
 import java.util.List;
 
@@ -28,35 +28,34 @@ public class BookStoreApi {
             .extract().response();
     }
 
-    @Step("Добавляем через API книгу в корзину")
+    @Step("Добавляем через API указанную книгу в корзину")
     public static void addBookToCart(String isbn) {
         IsbnModel isbnModel = new IsbnModel(isbn);
-        BookModel bookModel = new BookModel(response.getUserId(), List.of(isbnModel));
+        AddListOfBooksRequestModel addListOfBooksRequestModel = new AddListOfBooksRequestModel(response.getUserId(), List.of(isbnModel));
 
         given()
             .spec(requestSpec)
             .header("Authorization", "Bearer " + response.getToken())
-            .body(bookModel)
+            .body(addListOfBooksRequestModel)
         .when()
             .post("/BookStore/v1/Books")
         .then()
             .spec(response201Spec);
     }
 
-    public static ListOfBooksResponseModel getListOfBooks() {
+    public static UserListOfBooksResponseModel getListOfBooks() {
         return given(requestSpec)
                 .header("Authorization", "Bearer " + response.getToken())
-                .queryParam("UserId", response.getUserId())
             .when()
                 .get("/Account/v1/User/" + response.getUserId())
             .then()
                 .spec(response200Spec)
-                .extract().as(ListOfBooksResponseModel.class);
+                .extract().as(UserListOfBooksResponseModel.class);
     }
 
     @Step("Проверяем через API отсутствие книг в корзине")
     public static void checkBooksListIsEmpty() {
-        ListOfBooksResponseModel listOfBooksResponseModel = getListOfBooks();
-        assertThat(listOfBooksResponseModel.getBooks()).isEmpty();
+        UserListOfBooksResponseModel userListOfBooks = getListOfBooks();
+        assertThat(userListOfBooks.getBooks()).isEmpty();
     }
 }

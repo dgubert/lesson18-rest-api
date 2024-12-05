@@ -1,14 +1,10 @@
 package tests;
 
-import api.AccountApi;
 import api.BookStoreApi;
 import extensions.WithLogin;
-import models.ListOfBooksResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProfilePageTests extends BaseTest {
 
@@ -23,8 +19,9 @@ public class ProfilePageTests extends BaseTest {
 
         ProfilePage.openPage();
         ProfilePage.deleteBook(bookId);
-        ProfilePage.checkBookDeletedUI(bookId);
 
+        ProfilePage.openPage();
+        ProfilePage.checkBookDeletedUI(bookId);
         BookStoreApi.checkBooksListIsEmpty();
     }
 }

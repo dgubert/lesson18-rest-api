@@ -1,6 +1,6 @@
 package api;
 
-import models.AuthorizationModel;
+import models.AuthorizationRequestModel;
 import models.LoginResponseModel;
 
 import static io.restassured.RestAssured.given;
@@ -12,7 +12,7 @@ public class AccountApi {
             password = "Password1!";
 
     public static LoginResponseModel getAuthorizationResponse() {
-        AuthorizationModel authorizationModel = new AuthorizationModel();
+        AuthorizationRequestModel authorizationModel = new AuthorizationRequestModel();
         authorizationModel.setUserName(username);
         authorizationModel.setPassword(password);
 

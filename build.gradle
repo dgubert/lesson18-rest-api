@@ -54,4 +54,5 @@ tasks.withType(Test) {
 test {
     jvmArgs = ['-Dorg.slf4j.simpleLogger.defaultLogLevel=WARN']
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
